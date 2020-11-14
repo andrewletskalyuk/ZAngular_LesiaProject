@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Models.Model.Pacient>
+
+@{
+    ViewData["Title"] = "Pacients";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h5>Список пацієнтів</h5>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Ім'я
+            </th>
+            <th>
+                По-батькові
+            </th>
+            <th>
+                Прізвище
+            </th>
+            <th>
+                Дата народження
+            </th>
+            <th>
+                Дата створення запису
+            </th>
+            <th>
+                Анамнез
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cycle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StatusLocalic)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Objective)
+            </th>*@
+            <th>
+                Обстеження
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.Name;
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patronymic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birthday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Anamnesis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cycle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusLocalic)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Objective.PacientId)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Survey)
+            </td>
+            <td>
+                @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
+                <a asp-action="Details" asp-route-id="@item.Id">Деталі</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Видалити</a>
+            </td>
+        </tr>
+}
+         
+    </tbody>
+</table>

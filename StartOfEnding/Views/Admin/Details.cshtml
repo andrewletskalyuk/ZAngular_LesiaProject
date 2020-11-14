@@ -1,0 +1,105 @@
+﻿@model Models.Model.Pacient
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h5>Дані про пацієнта</h5>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Ім'я
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            По батькові
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Patronymic)
+        </dd>
+        <dt class="col-sm-2">
+            Прізвище
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+        <dt class="col-sm-2">
+            Дата народження
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Birthday)
+        </dd>
+        <dt class="col-sm-2">
+            Дата коли був створений
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AddDay)
+        </dd>
+        <dt class="col-sm-2">
+            Анамнез
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Anamnesis)
+        </dd>
+        <dt class="col-sm-2">
+            Цикл (для дівчат)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cycle)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StatusLocalic)
+        </dt>
+        <dd class="col-sm-10">
+            Status Localic
+        </dd>
+        <dt class="col-sm-2">
+            Дані паціента:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Objective.Weight - вага
+            <br />
+            @Model.Objective.Height - ріст
+            <br />
+            @Model.Objective.IMT - ІМТ
+        </dd>
+        <dt class="col-sm-2">
+            Діагнози:
+        </dt>
+        @foreach (var item in Model.PacientDiagnoses)
+        {
+            @if (item.Diagnosis != null)
+            {
+                <dt class="col-sm-10">
+                    <span>@item.Diagnosis.Name</span>
+                </dt>
+            }
+        }
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Survey)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Survey)
+        </dd>
+        <dt class="col-sm-2">
+            Скарги:
+        </dt>
+        @foreach (var item in Model.Complaints)
+        {
+            <tr>
+            @if (item != null)
+            {
+                <td class="col-sm-10">@item.Name</td>
+            }
+            </tr>
+        }
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Редагувати дані</a> |
+    <a asp-action="Pacients">Повернутись до списку</a>
+</div>

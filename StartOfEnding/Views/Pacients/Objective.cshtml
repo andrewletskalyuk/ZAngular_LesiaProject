@@ -1,0 +1,40 @@
+﻿@model Models.Model.Objective
+
+
+@{
+    ViewData["Title"] = "Objective";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Додайте дані: ріст, вага, маса про @ViewBag.Data</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Objective">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Weight" class="control-label"></label>
+                <input asp-for="Weight" class="form-control" />
+                <span asp-validation-for="Weight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Height" class="control-label"></label>
+                <input asp-for="Height" class="form-control" />
+                <span asp-validation-for="Height" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IMT" class="control-label"></label>
+                <input asp-for="IMT" class="form-control" />
+                <span asp-validation-for="IMT" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-action="AddObjective" type="submit" value="Додати дані" class="btn btn-primary" asp-route-id="@ViewBag.idPacient"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Admin" asp-action="Pacients">Повернутись до списку пацієнтів</a>
+</div>
+

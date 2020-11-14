@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Models.Model.Pacient>
+
+@{
+    ViewData["Title"] = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>GetAll</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Patronymic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Birthday)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddDay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Anamnesis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cycle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StatusLocalic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Objective)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Survey)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patronymic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birthday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Anamnesis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cycle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusLocalic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Objective.PacientId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Survey)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

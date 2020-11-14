@@ -1,0 +1,64 @@
+﻿@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+@model Models.Model.Appointment
+
+@{
+    ViewData["Title"] = "AddAppointment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Введіть будь ласка дані для запису на прийом</h4>
+@section Scripts
+{
+    <script src="https://www.google.com/recaptcha/api.js?render=@Configuration["googleReCaptcha:SiteKey"]"></script>
+    <script>
+        grecaptcha.ready(function() {
+            window.grecaptcha.execute('@Configuration["googleReCaptcha:SiteKey"]', { action: 'appointments' }).then(function (token) {
+                $("#captchaInput").val(token);
+            });
+        });
+    </script>
+}
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="AddAppointment">
+            <input type="hidden" name="captcha" id="captchaInput" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message" class="control-label"></label>
+                <input asp-for="Message" class="form-control" />
+                <span asp-validation-for="Message" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateWhenAdded" class="control-label"></label>
+                <input asp-for="DateWhenAdded" class="form-control" />
+                <span asp-validation-for="DateWhenAdded" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @*<input type="submit" value="Submit" class="btn btn-primary" />*@
+                <input type="submit" value="Підтвердження" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="home" asp-action="Index">Повернутися на головну сторінку</a>
+</div>
+
+

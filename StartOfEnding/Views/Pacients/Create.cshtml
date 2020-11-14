@@ -1,0 +1,61 @@
+﻿@model Models.Model.Pacient
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h4>Додати пацієнта</h4>
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Ім'я</label>
+        <input asp-for="Name" class="form-control" placeholder="Ім'я" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Patronymic" class="control-label">По батькові</label>
+        <input asp-for="Patronymic" class="form-control" placeholder="По батькові" />
+        <span asp-validation-for="Patronymic" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Surname" class="control-label">Прізвище</label>
+        <input asp-for="Surname" class="form-control" placeholder="Прізвище" />
+        <span asp-validation-for="Surname" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Birthday" class="control-label"></label>
+        <input asp-for="Birthday" class="form-control" placeholder="Дата народження"/>
+        <span asp-validation-for="Birthday" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Anamnesis" class="control-label"></label>
+        <input asp-for="Anamnesis" class="form-control" placeholder="Анамнез"/>
+        <span asp-validation-for="Anamnesis" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Cycle" class="control-label"></label>
+        <input asp-for="Cycle" class="form-control" placeholder="Циклічність"/>
+        <span asp-validation-for="Cycle" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Complaints" class="control-label"></label>
+        <input asp-for="Complaints" class="form-control" placeholder="Скарги"/>
+        <span asp-validation-for="Complaints" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="StatusLocalic" class="control-label"></label>
+        <input asp-for="StatusLocalic" class="form-control" placeholder="Status Localic"/>
+        <span asp-validation-for="StatusLocalic" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Survey" class="control-label"></label>
+        <input asp-for="Survey" class="form-control" placeholder="Обстеження"/>
+        <span asp-validation-for="Survey" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <input asp-action="Create" type="submit" value="Створити пацієнта" class="btn btn-primary" />
+    </div>
+</form>
