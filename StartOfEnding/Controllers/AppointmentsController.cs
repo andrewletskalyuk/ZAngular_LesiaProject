@@ -83,6 +83,7 @@ namespace StartOfEnding.Controllers
                 _context.Add(appointment);
                 await _context.SaveChangesAsync();
                 ViewBag.NameUser = appointment.Name;
+                ViewBag.EmailUser = appointment.Email;
 
                 //відправка повідомлення на пошту, хто записався на прийом - використаємо сервіс
                 string fromTitle = "Гоголь Л.В. лікар-перідатр";
